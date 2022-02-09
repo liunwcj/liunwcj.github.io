@@ -14,7 +14,7 @@ timezone:
 # baidu统计
 baidu_analytics: 82af16885ac8c822738a45177b32185f
 # 头像
-avatar: http://img.liunwcj.cn/getAvatar.jpg
+avatar: /images/avatar.jpg
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -76,5 +76,5 @@ theme: next_liunwcj
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@e.coding.net:liunwcj/liunwcj.git
-  branch: coding-pages
+  repository: git@github.com:liunwcj/liunwcj.github.io.git
+  branch: gh-pages
