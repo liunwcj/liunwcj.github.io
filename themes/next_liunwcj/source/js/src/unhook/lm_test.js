@@ -28,21 +28,20 @@ $(function () {
         params.append('shop_id', getAcShopID('shop_id'));
         params.append('t', _time);
 
-        axios.post(url, params)
-            .then(function (ret) {
-                layer.close(layerLoader);
-                console.log(ret);
-                console.log(ret.data);
-                console.log('result', ret.data.result);
-                if (ret.data.result == 0) {
-                    layer.alert(ret.data.errmsg);
-                } else if (ret.data.result == -1) {
-                    console.log('跳转', ret.data.data);
-                    window.location.href = ret.data.data;
-                } else {
-                    layer.alert(ret.data.errmsg);
-                }
-            });
+        axios.post(url, params).then(function (ret) {
+            layer.close(layerLoader);
+            console.log(ret);
+            console.log(ret.data);
+            console.log('result', ret.data.result);
+            if (ret.data.result == 0) {
+                layer.alert(ret.data.errmsg);
+            } else if (ret.data.result == -1) {
+                console.log('跳转', ret.data.data);
+                window.location.href = ret.data.data;
+            } else {
+                layer.alert(ret.data.errmsg);
+            }
+        });
     });
 
 });

@@ -1,5 +1,5 @@
 ---
-title: 使用debug.js调试手机网页
+title: 使用debug.js调试手机网页 转vConsole
 date: 2020-09-16 17:07
 ---
 
@@ -40,12 +40,53 @@ H5调试的时候，我们会使用console.log，但手机上看不到打印出�
     debug.silence()
 ```
 
-##### 测试CDN
->http://img.liunwcj.cn/debug.js (亲测)
->http://img.liunwcj.cn/debug.min.js
+##### 补充说明：
+推荐使腾讯推出的 vConsole，通过vConsole.js 重写console方法，实现了类似于微信小程序的移动端调试效果，方便查看http请求的详细信息以及浏览器缓存信息。体验更好些。
+
+###### 方法一：使用 npm（推荐）
+
+```bash
+$ npm install vconsole
+```
+Import 并初始化后，即可使用 console.log 功能，如 Chrome devtools 上一样。
+
+```javascript
+import VConsole from 'vconsole';
+
+const vConsole = new VConsole();
+// 或者使用配置参数来初始化，详情见文档
+const vConsole = new VConsole({ maxLogNumber: 1000 });
+
+// 接下来即可照常使用 `console` 等方法
+console.log('Hello world');
+
+// 结束调试后，可移除掉
+vConsole.destroy();
+```
+
+###### 方法二：使用 CDN 直接插入到 HTML
+
+```html
+<script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+<script>
+  // VConsole 默认会挂载到 `window.VConsole` 上
+  var vConsole = new window.VConsole();
+</script>
+```
+
+###### 可用的 CDN：
+https://unpkg.com/vconsole@latest/dist/vconsole.min.js
+https://cdn.jsdelivr.net/npm/vconsole@latest/dist/vconsole.min.js
+
+##### ~~测试CDN~~
+> ~~http://img.liunwcj.cn/debug.js~~
+> ~~http://img.liunwcj.cn/debug.min.js~~ 
 
 ##### 参考
+>###### debug:
 >https://github.com/binnng/debug.js
 >http://binnng.github.io/debug.js
 >http://binnng.github.io/debug.js/demo/index.html
+>###### vConsole:
+>https://github.com/Tencent/vConsole
 
