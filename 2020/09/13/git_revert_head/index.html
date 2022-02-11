@@ -1,0 +1,522 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在日常的工作中，git 添加操作是最基本的Git命令之一。以下是 Git 上传的原理及上传命令的几个步骤：在工作区（working directory）进行内容改动后，需要add操作，将文件添加到暂存区（index）。然后再 commit ，改动的内容才在本地仓库（local repository，或者也叫版本库）中生效。然后 push 到远程仓库（remote repository），才能在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git add后如何撤销?">
+<meta property="og:url" content="http://www.liunwcj.cn/2020/09/13/git_revert_head/index.html">
+<meta property="og:site_name" content="一灰">
+<meta property="og:description" content="在日常的工作中，git 添加操作是最基本的Git命令之一。以下是 Git 上传的原理及上传命令的几个步骤：在工作区（working directory）进行内容改动后，需要add操作，将文件添加到暂存区（index）。然后再 commit ，改动的内容才在本地仓库（local repository，或者也叫版本库）中生效。然后 push 到远程仓库（remote repository），才能在">
+<meta property="og:image" content="http://www.liunwcj.cn/imgs/git_reset_head_1.png">
+<meta property="article:published_time" content="2020-09-13T04:15:00.000Z">
+<meta property="article:modified_time" content="2022-02-11T15:18:28.565Z">
+<meta property="article:author" content="liunwcj">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.liunwcj.cn/imgs/git_reset_head_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> git add后如何撤销? | 一灰 </title>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?82af16885ac8c822738a45177b32185f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一灰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                git add后如何撤销?
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-09-13T12:15:00+08:00" content="2020-09-13">
+              2020-09-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- ![Alt text](图片链接 "title text") -->
+<p><img src="/imgs/git_reset_head_1.png" alt="git-add"></p>
+<p>在日常的工作中，git 添加操作是最基本的Git命令之一。<br>以下是 Git 上传的原理及上传命令的几个步骤：<br>在工作区（working directory）进行内容改动后，需要add操作，将文件添加到暂存区（index）。<br>然后再 commit ，改动的内容才在本地仓库（local repository，或者也叫版本库）中生效。<br>然后 push 到远程仓库（remote repository），才能在远程仓库中查看或者使用。</p>
+<h3 id="git-add-添加命令的常用操作："><a href="#git-add-添加命令的常用操作：" class="headerlink" title="git add 添加命令的常用操作："></a>git add 添加命令的常用操作：</h3><h4 id="1、添加所有文件到暂存区"><a href="#1、添加所有文件到暂存区" class="headerlink" title="1、添加所有文件到暂存区"></a>1、添加所有文件到暂存区</h4><p>一般情况下，我们会用 <font style="background-color:#CCC;">&nbsp; . &nbsp;</font> 或者 <font style="background-color:#CCC;">&nbsp; * &nbsp;</font> 来提交，表示的是所有，是一种正则表达式。<br>不加参数默认为将修改操作的文件和未跟踪新添加的文件添加到git系统的暂存区，注意不包括删除。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git add *</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拓展：</span></span><br><span class="line"><span class="comment"># -u 表示将已跟踪文件中的修改和删除的文件添加到暂存区，不包括新增加的文件，</span></span><br><span class="line"><span class="comment"># 注意这些被删除的文件被加入到暂存区再被提交并推送到服务器的版本库之后这个文件就会从git系统中消失了。</span></span><br><span class="line">git add -u .</span><br><span class="line"></span><br><span class="line"><span class="comment"># -A 表示将所有的已跟踪的文件的修改与删除和新增的未跟踪的文件都添加到暂存区。</span></span><br><span class="line">git add -A .</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、添加某个文件类型到暂存区"><a href="#2、添加某个文件类型到暂存区" class="headerlink" title="2、添加某个文件类型到暂存区"></a>2、添加某个文件类型到暂存区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如：所有的 .html 文件。</span></span><br><span class="line">git add *.html</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、添加整个文件夹到暂存区"><a href="#3、添加整个文件夹到暂存区" class="headerlink" title="3、添加整个文件夹到暂存区"></a>3、添加整个文件夹到暂存区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如：根目录的 mod 文件夹</span></span><br><span class="line">git add mod/</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、添加某个文件或者某个文件夹中的某个文件到暂存区"><a href="#4、添加某个文件或者某个文件夹中的某个文件到暂存区" class="headerlink" title="4、添加某个文件或者某个文件夹中的某个文件到暂存区"></a>4、添加某个文件或者某个文件夹中的某个文件到暂存区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如：根目录的 mod/index.html 文件</span></span><br><span class="line">git add mod/index.html</span><br></pre></td></tr></table></figure>
+
+<h3 id="取消-撤销文件-add"><a href="#取消-撤销文件-add" class="headerlink" title="取消/撤销文件 add"></a>取消/撤销文件 add</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 撤销操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一下git add 中的文件 </span></span><br><span class="line">git status </span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果后面什么都不跟的话 就是上一次git add 里面的文件全部撤销 </span></span><br><span class="line">git reset HEAD</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对某个文件进行撤销</span></span><br><span class="line">git reset HEAD XXX.html</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/12/select_none/" rel="next" title="H5移动端页面禁用长按选中文本">
+                <i class="fa fa-chevron-left"></i> H5移动端页面禁用长按选中文本
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/16/debug.js/" rel="prev" title="使用debug.js调试手机网页 转vConsole">
+                使用debug.js调试手机网页 转vConsole <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="liunwcj" />
+          <p class="site-author-name" itemprop="name">liunwcj</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-add-添加命令的常用操作："><span class="nav-number">1.</span> <span class="nav-text">git add 添加命令的常用操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、添加所有文件到暂存区"><span class="nav-number">1.1.</span> <span class="nav-text">1、添加所有文件到暂存区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、添加某个文件类型到暂存区"><span class="nav-number">1.2.</span> <span class="nav-text">2、添加某个文件类型到暂存区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、添加整个文件夹到暂存区"><span class="nav-number">1.3.</span> <span class="nav-text">3、添加整个文件夹到暂存区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、添加某个文件或者某个文件夹中的某个文件到暂存区"><span class="nav-number">1.4.</span> <span class="nav-text">4、添加某个文件或者某个文件夹中的某个文件到暂存区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消-撤销文件-add"><span class="nav-number">2.</span> <span class="nav-text">取消&#x2F;撤销文件 add</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liunwcj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

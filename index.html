@@ -1,0 +1,1368 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="一灰">
+<meta property="og:url" content="http://www.liunwcj.cn/index.html">
+<meta property="og:site_name" content="一灰">
+<meta property="article:author" content="liunwcj">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 一灰 </title>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?82af16885ac8c822738a45177b32185f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一灰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/10/14/vue_config_eslint_prettierrc/" itemprop="url">
+                  vue开启ESLint+Prettier，vscode配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-10-14T15:04:00+08:00" content="2020-10-14">
+              2020-10-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="1、vscode-需要安装-Vetur、ESLint、Prettier-Code-formatter-这三个插件"><a href="#1、vscode-需要安装-Vetur、ESLint、Prettier-Code-formatter-这三个插件" class="headerlink" title="1、vscode 需要安装 Vetur、ESLint、Prettier - Code formatter 这三个插件"></a>1、vscode 需要安装 Vetur、ESLint、Prettier - Code formatter 这三个插件</h5><p><img src="/imgs/eslint/vscode_plugin_1.png" alt="vscode_plugin"></p>
+<h5 id="2、打开vscode工具的设置（快捷键-Ctrl-）里面有两个设置。"><a href="#2、打开vscode工具的设置（快捷键-Ctrl-）里面有两个设置。" class="headerlink" title="2、打开vscode工具的设置（快捷键 Ctrl + ,）里面有两个设置。"></a>2、打开vscode工具的设置（快捷键 Ctrl + ,）里面有两个设置。</h5><p>一个是 USER SETTINGS（用户设置）也就是全局配置，其他项目也会应用这个配置。<br>另一个是WORKSPACE SETTINGS（工作区设置）也就是项目配置，会在当前项目的根路径里创建一个.vscode/settings.json文件，然后配置只在当前项目生效。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 个人习惯写在用户配置中，方便(Settings Sync)同步，Dome测试。Fix:建议写在单独工作区配置。</span></span><br><span class="line">    <span class="comment">// eslint &amp; prettierrc S</span></span><br><span class="line">    <span class="attr">"editor.codeActionsOnSave"</span>: &#123;</span><br><span class="line">        <span class="attr">"source.fixAll.eslint"</span>: <span class="literal">true</span> <span class="comment">// eslint配置项，保存时自动修复</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"editor.defaultFormatter"</span>: <span class="string">"esbenp.prettier-vscode"</span>, <span class="comment">// 默认使用prettier格式化支持的文件</span></span><br><span class="line">    <span class="attr">"eslint.workingDirectories"</span>: [&#123; <span class="attr">"mode"</span>: <span class="string">"auto"</span> &#125;], <span class="comment">// 自动设定eslint工作区</span></span><br><span class="line">    <span class="attr">"editor.formatOnSave"</span>: <span class="literal">true</span> <span class="comment">// 每次保存的时候自动格式化</span></span><br><span class="line">    <span class="comment">// eslint &amp; prettierrc E</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3、在构建vue项目-vue-create-vue-配置中，注意勾选几个事项。"><a href="#3、在构建vue项目-vue-create-vue-配置中，注意勾选几个事项。" class="headerlink" title="3、在构建vue项目(vue create vue)配置中，注意勾选几个事项。"></a>3、在构建vue项目(vue create vue)配置中，注意勾选几个事项。</h5><p><img src="/imgs/eslint/vue_create_config_1.png" alt="eslint1"><br><img src="/imgs/eslint/vue_create_config_2.png" alt="eslint2"><br><img src="/imgs/eslint/vue_create_config_3.png" alt="eslint3"><br><img src="/imgs/eslint/vue_create_config_4.png" alt="eslint4"></p>
+<h5 id="4、在项目的根目录建一个-prettierrc文件，在文件里写上如下代码。"><a href="#4、在项目的根目录建一个-prettierrc文件，在文件里写上如下代码。" class="headerlink" title="4、在项目的根目录建一个.prettierrc文件，在文件里写上如下代码。"></a>4、在项目的根目录建一个.prettierrc文件，在文件里写上如下代码。</h5><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"semi"</span>: <span class="literal">false</span>,    <span class="comment">// 使用分号, 默认true</span></span><br><span class="line">    <span class="attr">"singleQuote"</span>: <span class="literal">true</span>,   <span class="comment">// 使用单引号, 默认false(在jsx中配置无效, 默认都是双引号)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><blockquote>
+<p><a href="https://segmentfault.com/a/1190000016964384" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016964384</a><br><a href="https://www.jianshu.com/p/4be58a69b20f" target="_blank" rel="noopener">https://www.jianshu.com/p/4be58a69b20f</a><br><a href="https://www.jb51.net/article/183275.htm" target="_blank" rel="noopener">https://www.jb51.net/article/183275.htm</a></p>
+</blockquote>
+<h5 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h5><blockquote>
+<p><a href="https://github.com/forthealllight/blog/issues/45" target="_blank" rel="noopener">https://github.com/forthealllight/blog/issues/45</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/10/02/git_bash_alias/" itemprop="url">
+                  git bash中vue-cli 无法选择设置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-10-02T01:18:00+08:00" content="2020-10-02">
+              2020-10-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>windows下默认cmd用过的人都知道，在windows我一般都用git bash代替cmd。<br>vue-cli 项目创建时，git bash箭头选择无效问题。<br>通过设置 git bash的alias(配置永久别名)。</p>
+<p>1、用户目录下创建 .bash_profile 文件( ~/.bash_profile)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开 git bash</span></span><br><span class="line"><span class="built_in">cd</span>  <span class="comment"># 返回用户根目录</span></span><br><span class="line">vim .bash_profile <span class="comment"># 使用 vim 打开 .bash_profile 文件</span></span><br></pre></td></tr></table></figure>
+
+<p>2、复制粘贴2行配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用git bash使用 vue映射成 winpty vue.cmd</span></span><br><span class="line"><span class="built_in">alias</span> vue=<span class="string">"winpty vue.cmd"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在macOS下打开当前目录管理器也顺带加上</span></span><br><span class="line"><span class="built_in">alias</span> open=<span class="string">"explorer"</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h5><blockquote>
+<p><a href="https://segmentfault.com/a/1190000011532209" target="_blank" rel="noopener">https://segmentfault.com/a/1190000011532209</a><br><a href="https://segmentfault.com/a/1190000004413842" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004413842</a> (.bashrc和.bash_profile之间的不同)</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/09/28/img_loaded/" itemprop="url">
+                  jQuery 图片加载完成
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-09-28T18:07:00+08:00" content="2020-09-28">
+              2020-09-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="main"><a href="#main" class="headerlink" title="main:"></a>main:</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> imgLoaded = <span class="function"><span class="keyword">function</span>(<span class="params">$imgArr,callback</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">var</span> _length = $imgArr.length;</span><br><span class="line">     <span class="keyword">if</span>(_length &gt; <span class="number">0</span>)&#123;</span><br><span class="line">         $imgArr.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">             img.src = $(<span class="keyword">this</span>).attr(<span class="string">"src"</span>);</span><br><span class="line">             img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                 _length--;</span><br><span class="line">                 <span class="keyword">if</span>(<span class="keyword">typeof</span> callback === <span class="string">'function'</span> &amp;&amp; _length === <span class="number">0</span>)&#123;</span><br><span class="line">                     callback();</span><br><span class="line">                 &#125;  </span><br><span class="line">             &#125;</span><br><span class="line">         &#125;);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="test"><a href="#test" class="headerlink" title="test:"></a>test:</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>imgs - test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="javascript">            $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> imgLoaded = <span class="function"><span class="keyword">function</span><span class="params">($imgArr,callback)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">var</span> _length = $imgArr.length;</span></span><br><span class="line">                    if(_length &gt; 0)&#123;</span><br><span class="line"><span class="actionscript">                        $imgArr.each(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">                            <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span></span><br><span class="line"><span class="javascript">                            img.src = $(<span class="keyword">this</span>).attr(<span class="string">"src"</span>);</span></span><br><span class="line"><span class="actionscript">                            img.onload = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line">                                _length--;</span><br><span class="line"><span class="actionscript">                                <span class="keyword">if</span>(<span class="keyword">typeof</span> callback === <span class="string">'function'</span> &amp;&amp; _length === <span class="number">0</span>)&#123;</span></span><br><span class="line">                                    callback();</span><br><span class="line">                                &#125;  </span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> tpl = <span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">var</span> str = <span class="string">''</span>;</span></span><br><span class="line"><span class="javascript">                    $.each(data,<span class="function"><span class="keyword">function</span>(<span class="params">index,val</span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">                        str += <span class="string">'&lt;img src="'</span>+val.image+<span class="string">'" /&gt;'</span></span></span><br><span class="line">                    &#125;);</span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> str;</span></span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">                $.ajax(&#123;</span></span><br><span class="line"><span class="actionscript">                    url: <span class="string">'https://www.fastmock.site/mock/f4b7c39ca8a0e60b26a72e0912603206/card/test'</span>,</span></span><br><span class="line"><span class="actionscript">                    type: <span class="string">'POST'</span>,</span></span><br><span class="line"><span class="actionscript">                    dataType: <span class="string">'JSON'</span>,</span></span><br><span class="line"><span class="actionscript">                    success: <span class="function"><span class="keyword">function</span> <span class="params">(data, textStatus, jqXHR)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">                        $(<span class="string">'body'</span>).append(tpl(data.data.list));</span></span><br><span class="line"><span class="javascript">                        imgLoaded($(<span class="string">'body'</span>).find(<span class="string">'img'</span>),<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                            <span class="built_in">console</span>.log(<span class="string">'--- 图片加载完成 ---'</span>);</span></span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><blockquote>
+<p><a href="https://www.cnblogs.com/moqiutao/p/7283129.html" target="_blank" rel="noopener">https://www.cnblogs.com/moqiutao/p/7283129.html</a><br><a href="https://segmentfault.com/q/1010000016260540" target="_blank" rel="noopener">https://segmentfault.com/q/1010000016260540</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/09/16/debug.js/" itemprop="url">
+                  使用debug.js调试手机网页 转vConsole
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-09-16T17:07:00+08:00" content="2020-09-16">
+              2020-09-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>H5调试的时候，我们会使用console.log，但手机上看不到打印出来的信息。所以只好各种alert，但alert总显得不方便，页面JS报错也没提示。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> <span class="attr">content</span>=<span class="string">"telephone=no,email=no"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-capable"</span> <span class="attr">content</span>=<span class="string">"yes"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-touch-fullscreen"</span> <span class="attr">content</span>=<span class="string">"yes"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>移动端HTML模版<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"style.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 注意：页面中要第一个引入 debug.min.js 文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://binnng.github.io/debug.js/build/debug.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 快速上手</span></span><br><span class="line">debug.success(<span class="string">"This is success message:)"</span>);</span><br><span class="line">debug.error(<span class="string">"This is error message:)"</span>);</span><br><span class="line">debug.log(<span class="string">"This is primary message:)"</span>);</span><br><span class="line">debug.log(&#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;);</span><br><span class="line">debug.log([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// debug.js为了方便调试，会默认开启捕捉浏览器的报错。如果你不需要这个功能，可以这样禁止它：</span></span><br><span class="line">debug.silence()</span><br></pre></td></tr></table></figure>
+
+<h5 id="补充说明："><a href="#补充说明：" class="headerlink" title="补充说明："></a>补充说明：</h5><p>推荐使腾讯推出的 vConsole，通过vConsole.js 重写console方法，实现了类似于微信小程序的移动端调试效果，方便查看http请求的详细信息以及浏览器缓存信息。体验更好些。</p>
+<h6 id="方法一：使用-npm（推荐）"><a href="#方法一：使用-npm（推荐）" class="headerlink" title="方法一：使用 npm（推荐）"></a>方法一：使用 npm（推荐）</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vconsole</span><br></pre></td></tr></table></figure>
+<p>Import 并初始化后，即可使用 console.log 功能，如 Chrome devtools 上一样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> VConsole <span class="keyword">from</span> <span class="string">'vconsole'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> vConsole = <span class="keyword">new</span> VConsole();</span><br><span class="line"><span class="comment">// 或者使用配置参数来初始化，详情见文档</span></span><br><span class="line"><span class="keyword">const</span> vConsole = <span class="keyword">new</span> VConsole(&#123; <span class="attr">maxLogNumber</span>: <span class="number">1000</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接下来即可照常使用 `console` 等方法</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Hello world'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结束调试后，可移除掉</span></span><br><span class="line">vConsole.destroy();</span><br></pre></td></tr></table></figure>
+
+<h6 id="方法二：使用-CDN-直接插入到-HTML"><a href="#方法二：使用-CDN-直接插入到-HTML" class="headerlink" title="方法二：使用 CDN 直接插入到 HTML"></a>方法二：使用 CDN 直接插入到 HTML</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/vconsole@latest/dist/vconsole.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">  <span class="comment">// VConsole 默认会挂载到 `window.VConsole` 上</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> vConsole = <span class="keyword">new</span> <span class="built_in">window</span>.VConsole();</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="可用的-CDN："><a href="#可用的-CDN：" class="headerlink" title="可用的 CDN："></a>可用的 CDN：</h6><p><a href="https://unpkg.com/vconsole@latest/dist/vconsole.min.js" target="_blank" rel="noopener">https://unpkg.com/vconsole@latest/dist/vconsole.min.js</a><br><a href="https://cdn.jsdelivr.net/npm/vconsole@latest/dist/vconsole.min.js" target="_blank" rel="noopener">https://cdn.jsdelivr.net/npm/vconsole@latest/dist/vconsole.min.js</a></p>
+<h5 id="测试CDN"><a href="#测试CDN" class="headerlink" title="测试CDN"></a><del>测试CDN</del></h5><blockquote>
+<p><del><a href="http://img.liunwcj.cn/debug.js" target="_blank" rel="noopener">http://img.liunwcj.cn/debug.js</a></del><br><del><a href="http://img.liunwcj.cn/debug.min.js" target="_blank" rel="noopener">http://img.liunwcj.cn/debug.min.js</a></del> </p>
+</blockquote>
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><blockquote>
+<h6 id="debug"><a href="#debug" class="headerlink" title="debug:"></a>debug:</h6><p><a href="https://github.com/binnng/debug.js" target="_blank" rel="noopener">https://github.com/binnng/debug.js</a><br><a href="http://binnng.github.io/debug.js" target="_blank" rel="noopener">http://binnng.github.io/debug.js</a><br><a href="http://binnng.github.io/debug.js/demo/index.html" target="_blank" rel="noopener">http://binnng.github.io/debug.js/demo/index.html</a></p>
+<h6 id="vConsole"><a href="#vConsole" class="headerlink" title="vConsole:"></a>vConsole:</h6><p><a href="https://github.com/Tencent/vConsole" target="_blank" rel="noopener">https://github.com/Tencent/vConsole</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/09/13/git_revert_head/" itemprop="url">
+                  git add后如何撤销?
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-09-13T12:15:00+08:00" content="2020-09-13">
+              2020-09-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!-- ![Alt text](图片链接 "title text") -->
+<p><img src="/imgs/git_reset_head_1.png" alt="git-add"></p>
+<p>在日常的工作中，git 添加操作是最基本的Git命令之一。<br>以下是 Git 上传的原理及上传命令的几个步骤：<br>在工作区（working directory）进行内容改动后，需要add操作，将文件添加到暂存区（index）。<br>然后再 commit ，改动的内容才在本地仓库（local repository，或者也叫版本库）中生效。<br>然后 push 到远程仓库（remote repository），才能在远程仓库中查看或者使用。</p>
+<h3 id="git-add-添加命令的常用操作："><a href="#git-add-添加命令的常用操作：" class="headerlink" title="git add 添加命令的常用操作："></a>git add 添加命令的常用操作：</h3><h4 id="1、添加所有文件到暂存区"><a href="#1、添加所有文件到暂存区" class="headerlink" title="1、添加所有文件到暂存区"></a>1、添加所有文件到暂存区</h4><p>一般情况下，我们会用 <font style="background-color:#CCC;">&nbsp; . &nbsp;</font> 或者 <font style="background-color:#CCC;">&nbsp; * &nbsp;</font> 来提交，表示的是所有，是一种正则表达式。<br>不加参数默认为将修改操作的文件和未跟踪新添加的文件添加到git系统的暂存区，注意不包括删除。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git add *</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拓展：</span></span><br><span class="line"><span class="comment"># -u 表示将已跟踪文件中的修改和删除的文件添加到暂存区，不包括新增加的文件，</span></span><br><span class="line"><span class="comment"># 注意这些被删除的文件被加入到暂存区再被提交并推送到服务器的版本库之后这个文件就会从git系统中消失了。</span></span><br><span class="line">git add -u .</span><br><span class="line"></span><br><span class="line"><span class="comment"># -A 表示将所有的已跟踪的文件的修改与删除和新增的未跟踪的文件都添加到暂存区。</span></span><br><span class="line">git add -A .</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、添加某个文件类型到暂存区"><a href="#2、添加某个文件类型到暂存区" class="headerlink" title="2、添加某个文件类型到暂存区"></a>2、添加某个文件类型到暂存区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如：所有的 .html 文件。</span></span><br><span class="line">git add *.html</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、添加整个文件夹到暂存区"><a href="#3、添加整个文件夹到暂存区" class="headerlink" title="3、添加整个文件夹到暂存区"></a>3、添加整个文件夹到暂存区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如：根目录的 mod 文件夹</span></span><br><span class="line">git add mod/</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、添加某个文件或者某个文件夹中的某个文件到暂存区"><a href="#4、添加某个文件或者某个文件夹中的某个文件到暂存区" class="headerlink" title="4、添加某个文件或者某个文件夹中的某个文件到暂存区"></a>4、添加某个文件或者某个文件夹中的某个文件到暂存区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如：根目录的 mod/index.html 文件</span></span><br><span class="line">git add mod/index.html</span><br></pre></td></tr></table></figure>
+
+<h3 id="取消-撤销文件-add"><a href="#取消-撤销文件-add" class="headerlink" title="取消/撤销文件 add"></a>取消/撤销文件 add</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 撤销操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一下git add 中的文件 </span></span><br><span class="line">git status </span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果后面什么都不跟的话 就是上一次git add 里面的文件全部撤销 </span></span><br><span class="line">git reset HEAD</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对某个文件进行撤销</span></span><br><span class="line">git reset HEAD XXX.html</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/09/12/select_none/" itemprop="url">
+                  H5移动端页面禁用长按选中文本
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-09-12T12:41:00+08:00" content="2020-09-12">
+              2020-09-12
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="禁用长按可选中文本"><a href="#禁用长按可选中文本" class="headerlink" title="禁用长按可选中文本"></a>禁用长按可选中文本</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 已测有效 */</span></span><br><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">-webkit-touch-callout</span>:none;<span class="comment">/*系统默认菜单被禁用*/</span></span><br><span class="line">    <span class="attribute">-webkit-user-select</span>:none;<span class="comment">/*webkit浏览器*/</span></span><br><span class="line">    <span class="attribute">-khtml-user-select</span>:none;<span class="comment">/*早起浏览器*/</span></span><br><span class="line">    <span class="attribute">-moz-user-select</span>:none;<span class="comment">/*火狐浏览器*/</span></span><br><span class="line">    <span class="attribute">-ms-user-select</span>:none;<span class="comment">/*IE浏览器*/</span></span><br><span class="line">    <span class="attribute">user-select</span>:none;<span class="comment">/*用户是否能够选中文本*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此段css样式加入后能解决ios下手机浏览器，微信浏览器长按出现选择系统菜单问题，但是对于Android下微信浏览器还会出现不兼容问题。</p>
+<h5 id="禁止长按弹出系统菜单"><a href="#禁止长按弹出系统菜单" class="headerlink" title="禁止长按弹出系统菜单"></a>禁止长按弹出系统菜单</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 待测试</span></span><br><span class="line"><span class="comment">//oncontextmenu 事件在元素中用户右击鼠标时触发并打开上下文菜单，此处用于阻止菜单的出现。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//PC端 使右键和复制失效</span></span><br><span class="line"><span class="built_in">document</span>.oncontextmenu = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"event.returnValue=false"</span>);</span><br><span class="line"><span class="built_in">document</span>.onselectstart = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"event.returnValue=false"</span>);</span><br><span class="line"><span class="comment">//ios</span></span><br><span class="line"><span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">document</span>.onselectstart = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//安卓</span></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'contextmenu'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">document</span>.ontouchend = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"NO ERRPR:禁止长按弹出"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>安卓UC浏览器上还需加入以下代码，可以禁止长按呼出菜单:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 待测试 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 安卓UC浏览器 禁用长按 右键菜单 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"browsermode"</span> <span class="attr">content</span>=<span class="string">"application"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/09/03/css_order/" itemprop="url">
+                  CSS 属性书写顺序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-09-03T17:34:00+08:00" content="2020-09-03">
+              2020-09-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="属性书写顺序"><a href="#属性书写顺序" class="headerlink" title="属性书写顺序"></a>属性书写顺序</h5><p>Formatting Model（布局方式、位置） &gt; Box Model（尺寸） &gt; Typographic（文本相关） &gt; Visual（视觉效果） 的顺序书写，以提高代码的可读性。</p>
+<blockquote>
+<p>1、布局定位属性：display / position / float / clear / visibility / overflow<br>2、自身属性：width / height / margin / padding / border / background<br>3、文本属性：color / font / text-decoration / text-align / vertical-align / white- space / break-word<br>4、其他属性（CSS3）：content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient …</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Dome */</span></span><br><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">20px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: Arial, <span class="string">'Helvetica Neue'</span>, Helvetica, sans-serif;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">5</span>);</span><br><span class="line">    <span class="attribute">-webkit-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-moz-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-o-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-ms-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* CSS3浏览器私有前缀写法 */</span></span><br><span class="line"><span class="selector-class">.el</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-moz-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-o-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-ms-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><blockquote>
+<p><a href="https://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#vendor-keywords" target="_blank" rel="noopener">https://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#vendor-keywords</a><br><a href="https://www.shejidaren.com/css-written-specifications.html" target="_blank" rel="noopener">https://www.shejidaren.com/css-written-specifications.html</a><br><a href="https://www.cnblogs.com/ranran/p/3865472.html" target="_blank" rel="noopener">https://www.cnblogs.com/ranran/p/3865472.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/09/03/nowrap/" itemprop="url">
+                  CSS处理文字不换行、换行截断、溢出省略号
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-09-03T15:31:00+08:00" content="2020-09-03">
+              2020-09-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>每次都要搜索，这里直接来个总结。</p>
+<h5 id="1、使文字不换行"><a href="#1、使文字不换行" class="headerlink" title="1、使文字不换行"></a>1、使文字不换行</h5><pre><code>white-space: nowrap;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>normal</td>
+<td>默认。空白会被浏览器忽略。</td>
+</tr>
+<tr>
+<td>pre</td>
+<td>空白会被浏览器保留。其行为方式类似 HTML 中的 &lt;pre&gt; 标签。</td>
+</tr>
+<tr>
+<td>nowrap</td>
+<td>文本不会换行，文本会在在同一行上继续，直到遇到 &lt;br&gt; 标签为止。</td>
+</tr>
+<tr>
+<td>pre-wrap</td>
+<td>保留空白符序列，但是正常地进行换行。</td>
+</tr>
+<tr>
+<td>pre-line</td>
+<td>合并空白符序列，但是保留换行符。</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>规定应该从父元素继承 white-space 属性的值。</td>
+</tr>
+</tbody></table>
+<h5 id="2、允许长单词换行"><a href="#2、允许长单词换行" class="headerlink" title="2、允许长单词换行"></a>2、允许长单词换行</h5><pre><code>word-wrap:break-word;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>normal</td>
+<td>只在允许的断字点换行（浏览器保持默认处理）。</td>
+</tr>
+<tr>
+<td>break-word</td>
+<td>在长单词或 URL 地址内部进行换行。</td>
+</tr>
+</tbody></table>
+<h5 id="3、允许长单词换行"><a href="#3、允许长单词换行" class="headerlink" title="3、允许长单词换行"></a>3、允许长单词换行</h5><pre><code>word-break:break-all;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>normal</td>
+<td>使用浏览器默认的换行规则。</td>
+</tr>
+<tr>
+<td>break-all</td>
+<td>允许在单词内换行。</td>
+</tr>
+<tr>
+<td>keep-all</td>
+<td>只能在半角空格或连字符处换行。</td>
+</tr>
+</tbody></table>
+<h5 id="4、单行文字超出显示省略号"><a href="#4、单行文字超出显示省略号" class="headerlink" title="4、单行文字超出显示省略号"></a>4、单行文字超出显示省略号</h5><pre><code>overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+</code></pre>
+<h5 id="5、多行文字超出显示省略号"><a href="#5、多行文字超出显示省略号" class="headerlink" title="5、多行文字超出显示省略号"></a>5、多行文字超出显示省略号</h5><pre><code>overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+</code></pre>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/08/28/html_tpl/" itemprop="url">
+                  文件模版
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-08-28T09:35:00+08:00" content="2020-08-28">
+              2020-08-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HTML模版指的是团队使用的初始化HTML文件，里面会根据不同平台而采用不一样的设置，一般主要不同的设置就是 mata 标签的设置，以下是 PC 和移动端的 HTML 模版。</p>
+<h5 id="HTML5标准模版"><a href="#HTML5标准模版" class="headerlink" title="HTML5标准模版"></a>HTML5标准模版</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>HTML5标准模版<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> <span class="attr">content</span>=<span class="string">"telephone=no,email=no"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-capable"</span> <span class="attr">content</span>=<span class="string">"yes"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-touch-fullscreen"</span> <span class="attr">content</span>=<span class="string">"yes"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>移动端HTML模版<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">&lt;!-- S DNS预解析 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E DNS预解析 --&gt;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S 线上样式页面片，开发请直接取消注释引用 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- #include virtual="" --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E 线上样式页面片 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S 本地调试，根据开发模式选择调试方式，请开发删除 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/index.css"</span> &gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /本地调试方式 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"http://srcPath/index.css"</span> &gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /开发机调试方式 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E 本地调试 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="PC端"><a href="#PC端" class="headerlink" title="PC端"></a>PC端</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=Edge,chrome=1"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S 兼容国内双模浏览器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"renderer"</span> <span class="attr">content</span>=<span class="string">"webkit"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- webkit:默认用极速核 | ie-comp:ie兼容内核 | ie-stand:ie标准内核 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E 兼容国内双模浏览器 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>PC端HTML模版<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"your keywords"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"your description"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S DNS预解析 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E DNS预解析 --&gt;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S 线上样式页面片，开发请直接取消注释引用 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- #include virtual="" --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E 线上样式页面片 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S 本地调试，根据开发模式选择调试方式，请开发删除 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/index.css"</span> &gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /本地调试方式 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"http://srcPath/index.css"</span> &gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /开发机调试方式 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E 本地调试 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="liunwcj" />
+          <p class="site-author-name" itemprop="name">liunwcj</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liunwcj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
