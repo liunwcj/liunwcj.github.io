@@ -1,0 +1,544 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="应用场景不折腾，本着实用的原则，装一个zsh，并使用oh-my-zsh的配置，提高命令行的使用体验，让它看上去跟mac&#x2F;linux差不多。  切记：一切对于效率提升没有帮助的美化，都是耍流氓。  原生 zsh比起很多种Shell，我想可能还是 zsh 更加有吸引力；虽然 zsh 是 Linux 上的玩意，但是我想大家都用过 Git Bash —— 一个基于 MinGW64 环境的仿 Linux 环">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows 安装 Git Bash 增强版（Git SDK 安装和配置）">
+<meta property="og:url" content="http://www.liunwcj.cn/2023/09/27/git-sdk-md/index.html">
+<meta property="og:site_name" content="一灰">
+<meta property="og:description" content="应用场景不折腾，本着实用的原则，装一个zsh，并使用oh-my-zsh的配置，提高命令行的使用体验，让它看上去跟mac&#x2F;linux差不多。  切记：一切对于效率提升没有帮助的美化，都是耍流氓。  原生 zsh比起很多种Shell，我想可能还是 zsh 更加有吸引力；虽然 zsh 是 Linux 上的玩意，但是我想大家都用过 Git Bash —— 一个基于 MinGW64 环境的仿 Linux 环">
+<meta property="og:image" content="http://www.liunwcj.cn/imgs/git_sdk/install1.png">
+<meta property="og:image" content="http://www.liunwcj.cn/imgs/git_sdk/install2.png">
+<meta property="og:image" content="http://www.liunwcj.cn/imgs/git_sdk/install3.png">
+<meta property="og:image" content="http://www.liunwcj.cn/imgs/git_sdk/install4.png">
+<meta property="og:image" content="http://www.liunwcj.cn/imgs/git_sdk/install5.png">
+<meta property="og:image" content="http://www.liunwcj.cn/imgs/git_sdk/install6.png">
+<meta property="article:published_time" content="2023-09-27T08:04:31.000Z">
+<meta property="article:modified_time" content="2023-10-31T08:24:24.331Z">
+<meta property="article:author" content="liunwcj">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.liunwcj.cn/imgs/git_sdk/install1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> windows 安装 Git Bash 增强版（Git SDK 安装和配置） | 一灰 </title>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?82af16885ac8c822738a45177b32185f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一灰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                windows 安装 Git Bash 增强版（Git SDK 安装和配置）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2023-09-27T16:04:31+08:00" content="2023-09-27">
+              2023-09-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>不折腾，本着实用的原则，装一个zsh，并使用oh-my-zsh的配置，提高命令行的使用体验，让它看上去跟mac/linux差不多。</p>
+<blockquote>
+<p>切记：一切对于效率提升没有帮助的美化，都是耍流氓。</p>
+</blockquote>
+<h4 id="原生-zsh"><a href="#原生-zsh" class="headerlink" title="原生 zsh"></a>原生 zsh</h4><p>比起很多种Shell，我想可能还是 zsh 更加有吸引力；虽然 zsh 是 Linux 上的玩意，但是我想大家都用过 Git Bash —— 一个基于 MinGW64 环境的仿 Linux 环境的终端；虽然它已经很 Linux 了，但是很多功能还是被删减了；但是我们可以使用未删减的 Git SDK 来使用 zsh；</p>
+<p>Git SDK 全称 Git for Windows SDK，是基于 MSYS2（MinGW64 + Cygwin 合体增强）的仿 Linux 环境；安装后大约会占用 4~5 GB 的磁盘空间，但是包含了完整的仿 Linux 环境：包括常用工具，完整的 GNU Complier 链以及包管理器 pacman；基本上是一套完整的集成开发环境，所以是 SDK ==</p>
+<p>此外，虽然 Git SDK 是基于 MSYS2 的，是 Git 的超集…… 但是你仍然需要安装 Git（可能可以通过适当的配置解决），因为很多软件只认识 Git；建议安装 Git SDK 而不是 MSYS2，因为前者比后者好用。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h5 id="1、安装-git-发行版-git-for-windows"><a href="#1、安装-git-发行版-git-for-windows" class="headerlink" title="1、安装 git 发行版 git for windows"></a>1、安装 git 发行版 git for windows</h5><p>要安装 git sdk，需要先安装 git，你可以去 <a href="https://gitforwindows.org/" target="_blank" rel="noopener">Git for Windows</a> 官网，点击如图按钮下载<br><img src="/imgs/git_sdk/install1.png" alt="step1"></p>
+<h5 id="2、安装-Git-SDK"><a href="#2、安装-Git-SDK" class="headerlink" title="2、安装 Git SDK"></a>2、安装 Git SDK</h5><p>在 <a href="https://gitforwindows.org/" target="_blank" rel="noopener">Git for Windows</a> 官网，拉到最下面可以看到 Git SDK 的下载；<br><img src="/imgs/git_sdk/install2.png" alt="step2"><br>也可以通过链接 <a href="https://github.com/git-for-windows/build-extra/releases/latest" target="_blank" rel="noopener">https://github.com/git-for-windows/build-extra/releases/latest</a> 下载一个64位 的安装器。</p>
+<p>安装步骤如下：<br>将下载后的文件 git-sdk-installer-1.0.8-64.7z.exe 解压到指定盘符。<br><img src="/imgs/git_sdk/install3.png" alt="step3"><br>等待自动化安装过程：(有点慢，科学加速)<br><img src="/imgs/git_sdk/install4.png" alt="step4"></p>
+<pre><code>如果安装过程中，报错安装失败
+手动打开 C:\git-sdk-64，显示系统隐藏文件，然后删除.git 文件夹，然后手动管理员身份运行 C:\git-sdk-64 下的 setup-git-sdk.bat
+</code></pre>
+<h5 id="3、配置环境变量"><a href="#3、配置环境变量" class="headerlink" title="3、配置环境变量"></a>3、配置环境变量</h5><p><img src="/imgs/git_sdk/install5.png" alt="step5"><br><img src="/imgs/git_sdk/install6.png" alt="step6"></p>
+<h5 id="4、修改-pacman-软件包源"><a href="#4、修改-pacman-软件包源" class="headerlink" title="4、修改 pacman 软件包源"></a>4、修改 pacman 软件包源</h5><p>在 /etc/pacman.d/ 目录下有三个文件：mirrorlist.msys、mirrorlist.mingw64 和 mirrorlist.mingw32；我们可以直接在 Windows 中使用文本编辑器修改它们为国内源：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## MSYS2 repository mirrorlist</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Primary</span></span><br><span class="line"><span class="comment">## msys2.org</span></span><br><span class="line">Server = http://mirrors.ustc.edu.cn/msys2/msys/<span class="variable">$arch</span>/</span><br><span class="line">Server = http://repo.msys2.org/msys/<span class="variable">$arch</span></span><br><span class="line">Server = http://downloads.sourceforge.net/project/msys2/REPOS/MSYS2/<span class="variable">$arch</span></span><br><span class="line">Server = http://www2.futureware.at/~nickoe/msys2-mirror/msys/<span class="variable">$arch</span>/</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/<span class="variable">$arch</span>/</span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## 64-bit Mingw-w64 repository mirrorlist</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Primary</span></span><br><span class="line"><span class="comment">## msys2.org</span></span><br><span class="line">Server = http://mirrors.ustc.edu.cn/msys2/mingw/x86_64/</span><br><span class="line">Server = http://repo.msys2.org/mingw/x86_64</span><br><span class="line">Server = http://downloads.sourceforge.net/project/msys2/REPOS/MINGW/x86_64</span><br><span class="line">Server = http://www2.futureware.at/~nickoe/msys2-mirror/x86_64/</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64/</span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## 32-bit Mingw-w64 repository mirrorlist</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Primary</span></span><br><span class="line"><span class="comment">## msys2.org</span></span><br><span class="line">Server = http://mirrors.ustc.edu.cn/msys2/mingw/i686/</span><br><span class="line">Server = http://repo.msys2.org/mingw/i686</span><br><span class="line">Server = http://downloads.sourceforge.net/project/msys2/REPOS/MINGW/i686</span><br><span class="line">Server = http://www2.futureware.at/~nickoe/msys2-mirror/i686/</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686/</span><br></pre></td></tr></table></figure>
+<p>注意服务器的顺序，将国内服务器放在优先的位置才能保证 pacman 优先使用它；<br>调整之后执行 pacman -Syu 和 pacman -Su 更新源信息，首次更新可能需要重启；</p>
+<h5 id="5、安装-zsh-以及-oh-my-zsh"><a href="#5、安装-zsh-以及-oh-my-zsh" class="headerlink" title="5、安装 zsh 以及 oh my zsh"></a>5、安装 zsh 以及 oh my zsh</h5><p>先安装 zsh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S zsh</span><br></pre></td></tr></table></figure>
+<p>再安装 oh-my-zsh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br><span class="line"><span class="comment"># ↑ 通过 curl 或者 通过 wget ↓</span></span><br><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>当然，修改 host 文件，设置终端代理过于麻烦；我们可以科学上网后直接访问上述命令中的地址，获得脚本的内容后放到某个文件夹下，再使用 zsh 去执行脚本即可；<br>安装后脚本会在 ~ 目录下创建 .oh-my-zsh 目录，和 ~/.zshrc 在同一个目录中；这个 ~ 目录对应的就是 Windows 的用户文件夹。</p>
+<h6 id="关闭自动更新"><a href="#关闭自动更新" class="headerlink" title="关闭自动更新"></a>关闭自动更新</h6><p>此外，oh-my-zsh 会定期的运行更新检查来从 Github 下载最新的更新；但是由于国内网络环境的因素，这个过程并不能流利地进行，这样就会导致在更新的时候卡在初始化终端，造成不好的体验；关闭自动更新也需要编辑 ~/.zshrc 文件，找到 DISABLE_AUTO_UPDATE 项目，并取消其默认的注释：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- <span class="comment"># DISABLE_AUTO_UPDATE="true"</span></span><br><span class="line">+ DISABLE_AUTO_UPDATE=<span class="string">"true"</span></span><br></pre></td></tr></table></figure>
+<p>这样就关闭了 oh-my-zsh 定期的自动更新；如果需要手动更新，可以运行 upgrade_oh_my_zsh</p>
+<h6 id="字体问题"><a href="#字体问题" class="headerlink" title="字体问题"></a>字体问题</h6><p>上面说到了只有安装 PowerLine 字体才可以显示一些美妙的图标；但是如果你跑了一遍 p10k 的配置之后就会发现，上面提到的好一部分 PL 字体并不支持显示 fontawesome 上的图标，比如那个锁就会显示成一个方块，这不太行；前几天再网上瞎jb翻的时候看到了一种字体叫做 <a href="https://www.nerdfonts.com/" target="_blank" rel="noopener">Nerd Fonts</a>，有一种 <a href="https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip" target="_blank" rel="noopener">Hack Nerd Font</a> 似乎可以很棒的兼容这些图标，所以在这里推荐一手（<br>实际上，除了 oh my posh，其他的终端美化都是使用打包了 Fontawesome 的 Hack 字体作为更丰富的图标支持的；如果你需要使用包含多个图标的字体，比起一般的 PowerLine 字体，还是建议来一个 Hack 字体</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/19556676" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/19556676</a></li>
+<li><a href="https://shiraha.cn/2020/use-zsh-in-windows-10-with-wtd-and-vscode" target="_blank" rel="noopener">https://shiraha.cn/2020/use-zsh-in-windows-10-with-wtd-and-vscode</a></li>
+<li><a href="https://www.jianshu.com/p/67df4d3aa22d" target="_blank" rel="noopener">https://www.jianshu.com/p/67df4d3aa22d</a></li>
+<li><a href="https://marvinsblog.net/post/2022-03-05-build-git-for-windows/" target="_blank" rel="noopener">https://marvinsblog.net/post/2022-03-05-build-git-for-windows/</a></li>
+<li><a href="https://i.lckiss.com/?p=7654" target="_blank" rel="noopener">https://i.lckiss.com/?p=7654</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/msys2/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/msys2/</a></li>
+<li><a href="https://lamirs.vercel.app/git-sdk%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">https://lamirs.vercel.app/git-sdk%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/09/22/fontmin/" rel="next" title="前端字体文件大小优化 fontmin">
+                <i class="fa fa-chevron-left"></i> 前端字体文件大小优化 fontmin
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="liunwcj" />
+          <p class="site-author-name" itemprop="name">liunwcj</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景"><span class="nav-number">1.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原生-zsh"><span class="nav-number">2.</span> <span class="nav-text">原生 zsh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、安装-git-发行版-git-for-windows"><span class="nav-number">3.1.</span> <span class="nav-text">1、安装 git 发行版 git for windows</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、安装-Git-SDK"><span class="nav-number">3.2.</span> <span class="nav-text">2、安装 Git SDK</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、配置环境变量"><span class="nav-number">3.3.</span> <span class="nav-text">3、配置环境变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、修改-pacman-软件包源"><span class="nav-number">3.4.</span> <span class="nav-text">4、修改 pacman 软件包源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、安装-zsh-以及-oh-my-zsh"><span class="nav-number">3.5.</span> <span class="nav-text">5、安装 zsh 以及 oh my zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#关闭自动更新"><span class="nav-number">3.5.1.</span> <span class="nav-text">关闭自动更新</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字体问题"><span class="nav-number">3.5.2.</span> <span class="nav-text">字体问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liunwcj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

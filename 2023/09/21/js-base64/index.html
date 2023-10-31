@@ -1,0 +1,534 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是 Base64 编码？&amp;emsp;&amp;emsp;Base64：选出64个字符作为一个基本字符集（A-Z，a-z，0-9，+，&#x2F;，再加上作为垫字的”&#x3D;”，实际是65个字符），其它所有符号都转换成这个字符集中的字符。 &amp;emsp;&amp;emsp;Base64 因为能够起到隐藏数据的效果而常常被误认为是一种加密技术。值得强调的是， Base64 不是一种加密或压缩技术。实际上，Base64 编码信息的大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js中base64编码和解码">
+<meta property="og:url" content="http://www.liunwcj.cn/2023/09/21/js-base64/index.html">
+<meta property="og:site_name" content="一灰">
+<meta property="og:description" content="什么是 Base64 编码？&amp;emsp;&amp;emsp;Base64：选出64个字符作为一个基本字符集（A-Z，a-z，0-9，+，&#x2F;，再加上作为垫字的”&#x3D;”，实际是65个字符），其它所有符号都转换成这个字符集中的字符。 &amp;emsp;&amp;emsp;Base64 因为能够起到隐藏数据的效果而常常被误认为是一种加密技术。值得强调的是， Base64 不是一种加密或压缩技术。实际上，Base64 编码信息的大">
+<meta property="article:published_time" content="2023-09-21T07:11:33.000Z">
+<meta property="article:modified_time" content="2023-10-31T08:24:24.331Z">
+<meta property="article:author" content="liunwcj">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> js中base64编码和解码 | 一灰 </title>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?82af16885ac8c822738a45177b32185f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一灰</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                js中base64编码和解码
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2023-09-21T15:11:33+08:00" content="2023-09-21">
+              2023-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="什么是-Base64-编码？"><a href="#什么是-Base64-编码？" class="headerlink" title="什么是 Base64 编码？"></a>什么是 Base64 编码？</h5><p>&emsp;&emsp;Base64：选出64个字符作为一个基本字符集（A-Z，a-z，0-9，+，/，再加上作为垫字的”=”，实际是65个字符），其它所有符号都转换成这个字符集中的字符。</p>
+<p>&emsp;&emsp;Base64 因为能够起到隐藏数据的效果而常常被误认为是一种加密技术。值得强调的是， Base64 不是一种加密或压缩技术。实际上，Base64 编码信息的大小是原始数据实际大小的 1.3333 倍。</p>
+<pre><code>编码规则：
+1.将每三个字节作为一组，一共是24个二进制位。
+2.将这24个二进制位分为四组，每个组有6个二进制位。
+3.在每组前面加两个00，扩展成32个二进制位，即四个字节。
+4.根据下表，得到扩展后的每个字节的对应符号，这就是Base64的编码值。
+</code></pre>
+<blockquote>
+<p>理解：假设我们有 6 个 ASCII 字符，那么二进制数据就是 6 * 8 = 48（位）。如果使用 Base64 编码的话，那么就会分成 48 / 6 = 8(组)，每一组就会对应一个 ASCII 字符，也即是说，经过 Base64 编码后，我们会有 8 个 ASCII 字符。因为数据传输的时候都会被转换为电信号（虽然你看到的是字符），所以数据的大小都是按位来算的，8 个 ASCII 字符就是 8 * 8 = 64（位），64 / 48 = 4 / 3  ≈ 1.3333 。 综上所述，Base64 编码信息的大小是原始数据实际大小的 1.3333 倍。</p>
+</blockquote>
+<h5 id="1-Vue-中实现-base64-编码和解码"><a href="#1-Vue-中实现-base64-编码和解码" class="headerlink" title="1.Vue 中实现 base64 编码和解码"></a>1.Vue 中实现 base64 编码和解码</h5><p>使用 js-base64 插件实现</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">$ npm install --save js-base64</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      encodeTxt:<span class="string">'前端开发'</span>,</span><br><span class="line">      decodeTxt:<span class="string">'5YmN56uv5byA5Y+R'</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    base64Test()&#123;</span><br><span class="line">      <span class="keyword">let</span> Base64 = <span class="built_in">require</span>(<span class="string">'js-base64'</span>).Base64; <span class="comment">// 引入</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'编码：'</span> + Base64.encode(<span class="keyword">this</span>.encodeTxt))</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'解码：'</span> + Base64.decode(<span class="keyword">this</span>.decodeTxt))  </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted()&#123;</span><br><span class="line">    <span class="keyword">this</span>.base64Test();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="2-Web-通过-window对象的-btoa-和-atob-函数实现"><a href="#2-Web-通过-window对象的-btoa-和-atob-函数实现" class="headerlink" title="2. Web 通过 window对象的 btoa 和 atob 函数实现"></a>2. Web 通过 window对象的 btoa 和 atob 函数实现</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// window.atob() 函数用来解码被 base64 编码过的数据</span></span><br><span class="line"><span class="keyword">var</span> encoded_str = <span class="string">"VGhpcyBpcyBhIHN0cmluZw=="</span>;</span><br><span class="line"><span class="keyword">var</span> str = atob(encoded_str);</span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// This is a string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// window.btoa() 将ascii字符串或二进制数据转换成 base64 编码过的字符串</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"This is a string"</span>;</span><br><span class="line"><span class="keyword">var</span> encoded_str = btoa(str);</span><br><span class="line"><span class="built_in">console</span>.log(encoded_str); <span class="comment">// VGhpcyBpcyBhIHN0cmluZw==</span></span><br></pre></td></tr></table></figure>
+<pre><code>注意：不适用于带中文解密，即window.btoa 与 window.atob 不支持中文，且 IE9 以下不支持atob、btoa
+解决：btoa 不支持 Unicode 字符编码的问题
+编码时，先用 encodeURIComponent 对字符串进行编码，再进行 btoa 进行 Base64 编码
+解码时，先用 atob 对 Base64 编码的串进行解码，再用 decodeURIComponent 对字符串进行解码
+</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello,中国"</span>;</span><br><span class="line"><span class="keyword">var</span> encoded_str = btoa(<span class="built_in">encodeURIComponent</span>(str));</span><br><span class="line"><span class="keyword">var</span> decoded_str = <span class="built_in">decodeURIComponent</span>(atob(encoded_str));</span><br><span class="line"><span class="built_in">console</span>.log(encoded_str); <span class="comment">// aGVsbG8lMkMlRTQlQjglQUQlRTUlOUIlQkQ=</span></span><br><span class="line"><span class="built_in">console</span>.log(decoded_str); <span class="comment">// hello,中国在这里插入代码片</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-node中自带的base64编码与解码方法"><a href="#3-node中自带的base64编码与解码方法" class="headerlink" title="3.node中自带的base64编码与解码方法"></a>3.node中自带的base64编码与解码方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通字符串</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//编码</span></span><br><span class="line">Buffer.from(<span class="built_in">String</span>).toString(<span class="string">'base64'</span>);</span><br><span class="line"><span class="comment">//解码</span></span><br><span class="line">Buffer.from(base64Str, <span class="string">'base64'</span>).toString();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 十六进制Hex</span></span><br><span class="line"><span class="comment">//编码</span></span><br><span class="line">Buffer.from(<span class="built_in">String</span>, <span class="string">'base64'</span>).toString(<span class="string">'hex'</span>);</span><br><span class="line"><span class="comment">//解码</span></span><br><span class="line">Buffer.from(base64Str, <span class="string">'hex'</span>).toString(<span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图片</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="comment">//编码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64_encode</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> bitmap = fs.readFileSync(file);</span><br><span class="line">    <span class="keyword">return</span> Buffer.from(bitmap).toString(<span class="string">'base64'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//解码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64_decode</span>(<span class="params">base64str, file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bitmap = Buffer.from(base64str, <span class="string">'base64'</span>);</span><br><span class="line">    fs.writeFileSync(file, bitmap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><blockquote>
+<p><a href="https://juejin.cn/post/6976480394002563109" target="_blank" rel="noopener">https://juejin.cn/post/6976480394002563109</a><br><a href="https://juejin.cn/post/7195757485936803899" target="_blank" rel="noopener">https://juejin.cn/post/7195757485936803899</a><br><a href="https://juejin.cn/post/7003217250979151885" target="_blank" rel="noopener">https://juejin.cn/post/7003217250979151885</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/02/11/hexo-gh-host-bug/" rel="next" title="Hexo推送Github需要重新绑定域名问题">
+                <i class="fa fa-chevron-left"></i> Hexo推送Github需要重新绑定域名问题
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/09/22/fontmin/" rel="prev" title="前端字体文件大小优化 fontmin">
+                前端字体文件大小优化 fontmin <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="liunwcj" />
+          <p class="site-author-name" itemprop="name">liunwcj</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是-Base64-编码？"><span class="nav-number">1.</span> <span class="nav-text">什么是 Base64 编码？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Vue-中实现-base64-编码和解码"><span class="nav-number">2.</span> <span class="nav-text">1.Vue 中实现 base64 编码和解码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Web-通过-window对象的-btoa-和-atob-函数实现"><span class="nav-number">3.</span> <span class="nav-text">2. Web 通过 window对象的 btoa 和 atob 函数实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-node中自带的base64编码与解码方法"><span class="nav-number">4.</span> <span class="nav-text">3.node中自带的base64编码与解码方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liunwcj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

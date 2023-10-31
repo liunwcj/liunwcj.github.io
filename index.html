@@ -200,6 +200,362 @@
             
               
                 
+                <a class="post-title-link" href="/2023/09/27/git-sdk-md/" itemprop="url">
+                  windows 安装 Git Bash 增强版（Git SDK 安装和配置）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2023-09-27T16:04:31+08:00" content="2023-09-27">
+              2023-09-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>不折腾，本着实用的原则，装一个zsh，并使用oh-my-zsh的配置，提高命令行的使用体验，让它看上去跟mac/linux差不多。</p>
+<blockquote>
+<p>切记：一切对于效率提升没有帮助的美化，都是耍流氓。</p>
+</blockquote>
+<h4 id="原生-zsh"><a href="#原生-zsh" class="headerlink" title="原生 zsh"></a>原生 zsh</h4><p>比起很多种Shell，我想可能还是 zsh 更加有吸引力；虽然 zsh 是 Linux 上的玩意，但是我想大家都用过 Git Bash —— 一个基于 MinGW64 环境的仿 Linux 环境的终端；虽然它已经很 Linux 了，但是很多功能还是被删减了；但是我们可以使用未删减的 Git SDK 来使用 zsh；</p>
+<p>Git SDK 全称 Git for Windows SDK，是基于 MSYS2（MinGW64 + Cygwin 合体增强）的仿 Linux 环境；安装后大约会占用 4~5 GB 的磁盘空间，但是包含了完整的仿 Linux 环境：包括常用工具，完整的 GNU Complier 链以及包管理器 pacman；基本上是一套完整的集成开发环境，所以是 SDK ==</p>
+<p>此外，虽然 Git SDK 是基于 MSYS2 的，是 Git 的超集…… 但是你仍然需要安装 Git（可能可以通过适当的配置解决），因为很多软件只认识 Git；建议安装 Git SDK 而不是 MSYS2，因为前者比后者好用。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h5 id="1、安装-git-发行版-git-for-windows"><a href="#1、安装-git-发行版-git-for-windows" class="headerlink" title="1、安装 git 发行版 git for windows"></a>1、安装 git 发行版 git for windows</h5><p>要安装 git sdk，需要先安装 git，你可以去 <a href="https://gitforwindows.org/" target="_blank" rel="noopener">Git for Windows</a> 官网，点击如图按钮下载<br><img src="/imgs/git_sdk/install1.png" alt="step1"></p>
+<h5 id="2、安装-Git-SDK"><a href="#2、安装-Git-SDK" class="headerlink" title="2、安装 Git SDK"></a>2、安装 Git SDK</h5><p>在 <a href="https://gitforwindows.org/" target="_blank" rel="noopener">Git for Windows</a> 官网，拉到最下面可以看到 Git SDK 的下载；<br><img src="/imgs/git_sdk/install2.png" alt="step2"><br>也可以通过链接 <a href="https://github.com/git-for-windows/build-extra/releases/latest" target="_blank" rel="noopener">https://github.com/git-for-windows/build-extra/releases/latest</a> 下载一个64位 的安装器。</p>
+<p>安装步骤如下：<br>将下载后的文件 git-sdk-installer-1.0.8-64.7z.exe 解压到指定盘符。<br><img src="/imgs/git_sdk/install3.png" alt="step3"><br>等待自动化安装过程：(有点慢，科学加速)<br><img src="/imgs/git_sdk/install4.png" alt="step4"></p>
+<pre><code>如果安装过程中，报错安装失败
+手动打开 C:\git-sdk-64，显示系统隐藏文件，然后删除.git 文件夹，然后手动管理员身份运行 C:\git-sdk-64 下的 setup-git-sdk.bat
+</code></pre>
+<h5 id="3、配置环境变量"><a href="#3、配置环境变量" class="headerlink" title="3、配置环境变量"></a>3、配置环境变量</h5><p><img src="/imgs/git_sdk/install5.png" alt="step5"><br><img src="/imgs/git_sdk/install6.png" alt="step6"></p>
+<h5 id="4、修改-pacman-软件包源"><a href="#4、修改-pacman-软件包源" class="headerlink" title="4、修改 pacman 软件包源"></a>4、修改 pacman 软件包源</h5><p>在 /etc/pacman.d/ 目录下有三个文件：mirrorlist.msys、mirrorlist.mingw64 和 mirrorlist.mingw32；我们可以直接在 Windows 中使用文本编辑器修改它们为国内源：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## MSYS2 repository mirrorlist</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Primary</span></span><br><span class="line"><span class="comment">## msys2.org</span></span><br><span class="line">Server = http://mirrors.ustc.edu.cn/msys2/msys/<span class="variable">$arch</span>/</span><br><span class="line">Server = http://repo.msys2.org/msys/<span class="variable">$arch</span></span><br><span class="line">Server = http://downloads.sourceforge.net/project/msys2/REPOS/MSYS2/<span class="variable">$arch</span></span><br><span class="line">Server = http://www2.futureware.at/~nickoe/msys2-mirror/msys/<span class="variable">$arch</span>/</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/<span class="variable">$arch</span>/</span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## 64-bit Mingw-w64 repository mirrorlist</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Primary</span></span><br><span class="line"><span class="comment">## msys2.org</span></span><br><span class="line">Server = http://mirrors.ustc.edu.cn/msys2/mingw/x86_64/</span><br><span class="line">Server = http://repo.msys2.org/mingw/x86_64</span><br><span class="line">Server = http://downloads.sourceforge.net/project/msys2/REPOS/MINGW/x86_64</span><br><span class="line">Server = http://www2.futureware.at/~nickoe/msys2-mirror/x86_64/</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64/</span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## 32-bit Mingw-w64 repository mirrorlist</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Primary</span></span><br><span class="line"><span class="comment">## msys2.org</span></span><br><span class="line">Server = http://mirrors.ustc.edu.cn/msys2/mingw/i686/</span><br><span class="line">Server = http://repo.msys2.org/mingw/i686</span><br><span class="line">Server = http://downloads.sourceforge.net/project/msys2/REPOS/MINGW/i686</span><br><span class="line">Server = http://www2.futureware.at/~nickoe/msys2-mirror/i686/</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686/</span><br></pre></td></tr></table></figure>
+<p>注意服务器的顺序，将国内服务器放在优先的位置才能保证 pacman 优先使用它；<br>调整之后执行 pacman -Syu 和 pacman -Su 更新源信息，首次更新可能需要重启；</p>
+<h5 id="5、安装-zsh-以及-oh-my-zsh"><a href="#5、安装-zsh-以及-oh-my-zsh" class="headerlink" title="5、安装 zsh 以及 oh my zsh"></a>5、安装 zsh 以及 oh my zsh</h5><p>先安装 zsh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S zsh</span><br></pre></td></tr></table></figure>
+<p>再安装 oh-my-zsh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br><span class="line"><span class="comment"># ↑ 通过 curl 或者 通过 wget ↓</span></span><br><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>当然，修改 host 文件，设置终端代理过于麻烦；我们可以科学上网后直接访问上述命令中的地址，获得脚本的内容后放到某个文件夹下，再使用 zsh 去执行脚本即可；<br>安装后脚本会在 ~ 目录下创建 .oh-my-zsh 目录，和 ~/.zshrc 在同一个目录中；这个 ~ 目录对应的就是 Windows 的用户文件夹。</p>
+<h6 id="关闭自动更新"><a href="#关闭自动更新" class="headerlink" title="关闭自动更新"></a>关闭自动更新</h6><p>此外，oh-my-zsh 会定期的运行更新检查来从 Github 下载最新的更新；但是由于国内网络环境的因素，这个过程并不能流利地进行，这样就会导致在更新的时候卡在初始化终端，造成不好的体验；关闭自动更新也需要编辑 ~/.zshrc 文件，找到 DISABLE_AUTO_UPDATE 项目，并取消其默认的注释：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- <span class="comment"># DISABLE_AUTO_UPDATE="true"</span></span><br><span class="line">+ DISABLE_AUTO_UPDATE=<span class="string">"true"</span></span><br></pre></td></tr></table></figure>
+<p>这样就关闭了 oh-my-zsh 定期的自动更新；如果需要手动更新，可以运行 upgrade_oh_my_zsh</p>
+<h6 id="字体问题"><a href="#字体问题" class="headerlink" title="字体问题"></a>字体问题</h6><p>上面说到了只有安装 PowerLine 字体才可以显示一些美妙的图标；但是如果你跑了一遍 p10k 的配置之后就会发现，上面提到的好一部分 PL 字体并不支持显示 fontawesome 上的图标，比如那个锁就会显示成一个方块，这不太行；前几天再网上瞎jb翻的时候看到了一种字体叫做 <a href="https://www.nerdfonts.com/" target="_blank" rel="noopener">Nerd Fonts</a>，有一种 <a href="https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip" target="_blank" rel="noopener">Hack Nerd Font</a> 似乎可以很棒的兼容这些图标，所以在这里推荐一手（<br>实际上，除了 oh my posh，其他的终端美化都是使用打包了 Fontawesome 的 Hack 字体作为更丰富的图标支持的；如果你需要使用包含多个图标的字体，比起一般的 PowerLine 字体，还是建议来一个 Hack 字体</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/19556676" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/19556676</a></li>
+<li><a href="https://shiraha.cn/2020/use-zsh-in-windows-10-with-wtd-and-vscode" target="_blank" rel="noopener">https://shiraha.cn/2020/use-zsh-in-windows-10-with-wtd-and-vscode</a></li>
+<li><a href="https://www.jianshu.com/p/67df4d3aa22d" target="_blank" rel="noopener">https://www.jianshu.com/p/67df4d3aa22d</a></li>
+<li><a href="https://marvinsblog.net/post/2022-03-05-build-git-for-windows/" target="_blank" rel="noopener">https://marvinsblog.net/post/2022-03-05-build-git-for-windows/</a></li>
+<li><a href="https://i.lckiss.com/?p=7654" target="_blank" rel="noopener">https://i.lckiss.com/?p=7654</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/msys2/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/msys2/</a></li>
+<li><a href="https://lamirs.vercel.app/git-sdk%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">https://lamirs.vercel.app/git-sdk%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2023/09/22/fontmin/" itemprop="url">
+                  前端字体文件大小优化 fontmin
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2023-09-22T16:49:00+08:00" content="2023-09-22">
+              2023-09-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h5><p>有时候，我们想给网站的 Logo 、 Slogan 、标题、活动页等的中文自定义字体，我们可以使用 @font-face 引入 Web 字体，但是完整的中文字体库都是 8M 10M ，加载性能非常差，所以我们提取部分我们使用到的字体，这样可以把字体文件变成几KB。</p>
+<h5 id="1-node-模块"><a href="#1-node-模块" class="headerlink" title="1.node 模块"></a>1.node 模块</h5><p>提供细粒度 plugins，你可以自由定制专属的 webfont 压缩方案，比如：把字体转为 base64 嵌入到 css 中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Fontmin = <span class="built_in">require</span>(<span class="string">'fontmin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fontmin = <span class="keyword">new</span> Fontmin()</span><br><span class="line">    .use(Fontmin.css(&#123;</span><br><span class="line">        base64: <span class="literal">true</span>		<span class="comment">// 开启 base64 嵌入，默认关闭</span></span><br><span class="line">    &#125;));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 输出 css： */</span></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">"eduSong"</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"eduSong.eot"</span>); <span class="comment">/* IE9 */</span></span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"eduSong.eot?#iefix"</span>) <span class="built_in">format</span>(<span class="string">"embedded-opentype"</span>), <span class="comment">/* IE6-IE8 */</span></span><br><span class="line">    <span class="built_in">url</span>(data:application/x-font-ttf;charset=utf-<span class="number">8</span>;base64,AAEAAAAKAIAAAwA....) <span class="built_in">format</span>(<span class="string">"truetype"</span>), <span class="comment">/* chrome、firefox、opera、Safari, Android，iOS 4.2+ */</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">"eduSong.svg#eduSong"</span>) <span class="built_in">format</span>(<span class="string">"svg"</span>); <span class="comment">/* iOS 4.1- */</span></span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为方便大家使用，提供一个最基本的 webfont 工作流 snippet：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Fontmin = <span class="built_in">require</span>(<span class="string">'fontmin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> srcPath = <span class="string">'src/font/*.ttf'</span>; <span class="comment">// 字体源文件</span></span><br><span class="line"><span class="keyword">var</span> destPath = <span class="string">'asset/font'</span>;    <span class="comment">// 输出路径</span></span><br><span class="line"><span class="keyword">var</span> text = <span class="string">'我说你是人间的四月天；笑响点亮了四面风；轻灵在春的光艳中交舞着变。'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="keyword">var</span> fontmin = <span class="keyword">new</span> Fontmin()</span><br><span class="line">    .src(srcPath)               <span class="comment">// 输入配置</span></span><br><span class="line">    .use(Fontmin.glyph(&#123;        <span class="comment">// 字型提取插件</span></span><br><span class="line">        text: text              <span class="comment">// 所需文字</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .use(Fontmin.ttf2eot())     <span class="comment">// eot 转换插件</span></span><br><span class="line">    .use(Fontmin.ttf2woff())    <span class="comment">// woff 转换插件     </span></span><br><span class="line">    .use(Fontmin.ttf2svg())     <span class="comment">// svg 转换插件</span></span><br><span class="line">    .use(Fontmin.css())         <span class="comment">// css 生成插件</span></span><br><span class="line">    .dest(destPath);            <span class="comment">// 输出配置</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行</span></span><br><span class="line">fontmin.run(<span class="function"><span class="keyword">function</span> (<span class="params">err, files, stream</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (err) &#123;                  <span class="comment">// 异常捕捉</span></span><br><span class="line">        <span class="built_in">console</span>.error(err);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'done'</span>);        <span class="comment">// 成功</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-命令行"><a href="#2-命令行" class="headerlink" title="2.命令行"></a>2.命令行</h5><p>极客范儿? 就是喜欢弹奏键盘这种飘逸的感觉～</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 全局安装 fontmin</span></span><br><span class="line">npm install -g fontmin</span><br></pre></td></tr></table></figure>
+<p><img src="/imgs/fontmin/terminal.png" alt="terminal"></p>
+<h5 id="3-客户端-GUI"><a href="#3-客户端-GUI" class="headerlink" title="3.客户端(GUI)"></a>3.客户端(GUI)</h5><p>懒得写代码? 直接把 TTF 拖进来，左侧输入需要文字，右侧实时看效果。点击生成，duang 一下，就搞定了~<br><img src="/imgs/fontmin/app.png" alt="GUI"></p>
+<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>官方：<a href="http://ecomfe.github.io/fontmin/" target="_blank" rel="noopener">http://ecomfe.github.io/fontmin/</a><br>Github: <a href="https://github.com/ecomfe/fontmin-app/releases" target="_blank" rel="noopener">https://github.com/ecomfe/fontmin-app/releases</a> (GUI安装文件)</p>
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><blockquote>
+<p><a href="http://ecomfe.github.io/blog/fontmin-getting-started/" target="_blank" rel="noopener">http://ecomfe.github.io/blog/fontmin-getting-started/</a><br><a href="https://juejin.cn/post/7109286663796293645" target="_blank" rel="noopener">https://juejin.cn/post/7109286663796293645</a><br><a href="https://juejin.cn/post/6844903826051301389" target="_blank" rel="noopener">https://juejin.cn/post/6844903826051301389</a><br><a href="https://segmentfault.com/a/1190000020121850" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020121850</a> (iconfont 在线预览工具及其解析)</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2023/09/21/js-base64/" itemprop="url">
+                  js中base64编码和解码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2023-09-21T15:11:33+08:00" content="2023-09-21">
+              2023-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="什么是-Base64-编码？"><a href="#什么是-Base64-编码？" class="headerlink" title="什么是 Base64 编码？"></a>什么是 Base64 编码？</h5><p>&emsp;&emsp;Base64：选出64个字符作为一个基本字符集（A-Z，a-z，0-9，+，/，再加上作为垫字的”=”，实际是65个字符），其它所有符号都转换成这个字符集中的字符。</p>
+<p>&emsp;&emsp;Base64 因为能够起到隐藏数据的效果而常常被误认为是一种加密技术。值得强调的是， Base64 不是一种加密或压缩技术。实际上，Base64 编码信息的大小是原始数据实际大小的 1.3333 倍。</p>
+<pre><code>编码规则：
+1.将每三个字节作为一组，一共是24个二进制位。
+2.将这24个二进制位分为四组，每个组有6个二进制位。
+3.在每组前面加两个00，扩展成32个二进制位，即四个字节。
+4.根据下表，得到扩展后的每个字节的对应符号，这就是Base64的编码值。
+</code></pre>
+<blockquote>
+<p>理解：假设我们有 6 个 ASCII 字符，那么二进制数据就是 6 * 8 = 48（位）。如果使用 Base64 编码的话，那么就会分成 48 / 6 = 8(组)，每一组就会对应一个 ASCII 字符，也即是说，经过 Base64 编码后，我们会有 8 个 ASCII 字符。因为数据传输的时候都会被转换为电信号（虽然你看到的是字符），所以数据的大小都是按位来算的，8 个 ASCII 字符就是 8 * 8 = 64（位），64 / 48 = 4 / 3  ≈ 1.3333 。 综上所述，Base64 编码信息的大小是原始数据实际大小的 1.3333 倍。</p>
+</blockquote>
+<h5 id="1-Vue-中实现-base64-编码和解码"><a href="#1-Vue-中实现-base64-编码和解码" class="headerlink" title="1.Vue 中实现 base64 编码和解码"></a>1.Vue 中实现 base64 编码和解码</h5><p>使用 js-base64 插件实现</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">$ npm install --save js-base64</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      encodeTxt:<span class="string">'前端开发'</span>,</span><br><span class="line">      decodeTxt:<span class="string">'5YmN56uv5byA5Y+R'</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    base64Test()&#123;</span><br><span class="line">      <span class="keyword">let</span> Base64 = <span class="built_in">require</span>(<span class="string">'js-base64'</span>).Base64; <span class="comment">// 引入</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'编码：'</span> + Base64.encode(<span class="keyword">this</span>.encodeTxt))</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'解码：'</span> + Base64.decode(<span class="keyword">this</span>.decodeTxt))  </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted()&#123;</span><br><span class="line">    <span class="keyword">this</span>.base64Test();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="2-Web-通过-window对象的-btoa-和-atob-函数实现"><a href="#2-Web-通过-window对象的-btoa-和-atob-函数实现" class="headerlink" title="2. Web 通过 window对象的 btoa 和 atob 函数实现"></a>2. Web 通过 window对象的 btoa 和 atob 函数实现</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// window.atob() 函数用来解码被 base64 编码过的数据</span></span><br><span class="line"><span class="keyword">var</span> encoded_str = <span class="string">"VGhpcyBpcyBhIHN0cmluZw=="</span>;</span><br><span class="line"><span class="keyword">var</span> str = atob(encoded_str);</span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// This is a string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// window.btoa() 将ascii字符串或二进制数据转换成 base64 编码过的字符串</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"This is a string"</span>;</span><br><span class="line"><span class="keyword">var</span> encoded_str = btoa(str);</span><br><span class="line"><span class="built_in">console</span>.log(encoded_str); <span class="comment">// VGhpcyBpcyBhIHN0cmluZw==</span></span><br></pre></td></tr></table></figure>
+<pre><code>注意：不适用于带中文解密，即window.btoa 与 window.atob 不支持中文，且 IE9 以下不支持atob、btoa
+解决：btoa 不支持 Unicode 字符编码的问题
+编码时，先用 encodeURIComponent 对字符串进行编码，再进行 btoa 进行 Base64 编码
+解码时，先用 atob 对 Base64 编码的串进行解码，再用 decodeURIComponent 对字符串进行解码
+</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello,中国"</span>;</span><br><span class="line"><span class="keyword">var</span> encoded_str = btoa(<span class="built_in">encodeURIComponent</span>(str));</span><br><span class="line"><span class="keyword">var</span> decoded_str = <span class="built_in">decodeURIComponent</span>(atob(encoded_str));</span><br><span class="line"><span class="built_in">console</span>.log(encoded_str); <span class="comment">// aGVsbG8lMkMlRTQlQjglQUQlRTUlOUIlQkQ=</span></span><br><span class="line"><span class="built_in">console</span>.log(decoded_str); <span class="comment">// hello,中国在这里插入代码片</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-node中自带的base64编码与解码方法"><a href="#3-node中自带的base64编码与解码方法" class="headerlink" title="3.node中自带的base64编码与解码方法"></a>3.node中自带的base64编码与解码方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通字符串</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//编码</span></span><br><span class="line">Buffer.from(<span class="built_in">String</span>).toString(<span class="string">'base64'</span>);</span><br><span class="line"><span class="comment">//解码</span></span><br><span class="line">Buffer.from(base64Str, <span class="string">'base64'</span>).toString();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 十六进制Hex</span></span><br><span class="line"><span class="comment">//编码</span></span><br><span class="line">Buffer.from(<span class="built_in">String</span>, <span class="string">'base64'</span>).toString(<span class="string">'hex'</span>);</span><br><span class="line"><span class="comment">//解码</span></span><br><span class="line">Buffer.from(base64Str, <span class="string">'hex'</span>).toString(<span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图片</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="comment">//编码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64_encode</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> bitmap = fs.readFileSync(file);</span><br><span class="line">    <span class="keyword">return</span> Buffer.from(bitmap).toString(<span class="string">'base64'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//解码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64_decode</span>(<span class="params">base64str, file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bitmap = Buffer.from(base64str, <span class="string">'base64'</span>);</span><br><span class="line">    fs.writeFileSync(file, bitmap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><blockquote>
+<p><a href="https://juejin.cn/post/6976480394002563109" target="_blank" rel="noopener">https://juejin.cn/post/6976480394002563109</a><br><a href="https://juejin.cn/post/7195757485936803899" target="_blank" rel="noopener">https://juejin.cn/post/7195757485936803899</a><br><a href="https://juejin.cn/post/7003217250979151885" target="_blank" rel="noopener">https://juejin.cn/post/7003217250979151885</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2022/02/11/hexo-gh-host-bug/" itemprop="url">
                   Hexo推送Github需要重新绑定域名问题
                 </a>
@@ -902,385 +1258,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/09/03/css_order/" itemprop="url">
-                  CSS 属性书写顺序
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-09-03T17:34:00+08:00" content="2020-09-03">
-              2020-09-03
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="属性书写顺序"><a href="#属性书写顺序" class="headerlink" title="属性书写顺序"></a>属性书写顺序</h5><p>Formatting Model（布局方式、位置） &gt; Box Model（尺寸） &gt; Typographic（文本相关） &gt; Visual（视觉效果） 的顺序书写，以提高代码的可读性。</p>
-<blockquote>
-<p>1、布局定位属性：display / position / float / clear / visibility / overflow<br>2、自身属性：width / height / margin / padding / border / background<br>3、文本属性：color / font / text-decoration / text-align / vertical-align / white- space / break-word<br>4、其他属性（CSS3）：content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient …</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Dome */</span></span><br><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">20px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: Arial, <span class="string">'Helvetica Neue'</span>, Helvetica, sans-serif;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">5</span>);</span><br><span class="line">    <span class="attribute">-webkit-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-moz-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-o-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-ms-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* CSS3浏览器私有前缀写法 */</span></span><br><span class="line"><span class="selector-class">.el</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-moz-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-o-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-ms-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><blockquote>
-<p><a href="https://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#vendor-keywords" target="_blank" rel="noopener">https://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#vendor-keywords</a><br><a href="https://www.shejidaren.com/css-written-specifications.html" target="_blank" rel="noopener">https://www.shejidaren.com/css-written-specifications.html</a><br><a href="https://www.cnblogs.com/ranran/p/3865472.html" target="_blank" rel="noopener">https://www.cnblogs.com/ranran/p/3865472.html</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/09/03/nowrap/" itemprop="url">
-                  CSS处理文字不换行、换行截断、溢出省略号
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-09-03T15:31:00+08:00" content="2020-09-03">
-              2020-09-03
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>每次都要搜索，这里直接来个总结。</p>
-<h5 id="1、使文字不换行"><a href="#1、使文字不换行" class="headerlink" title="1、使文字不换行"></a>1、使文字不换行</h5><pre><code>white-space: nowrap;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>normal</td>
-<td>默认。空白会被浏览器忽略。</td>
-</tr>
-<tr>
-<td>pre</td>
-<td>空白会被浏览器保留。其行为方式类似 HTML 中的 &lt;pre&gt; 标签。</td>
-</tr>
-<tr>
-<td>nowrap</td>
-<td>文本不会换行，文本会在在同一行上继续，直到遇到 &lt;br&gt; 标签为止。</td>
-</tr>
-<tr>
-<td>pre-wrap</td>
-<td>保留空白符序列，但是正常地进行换行。</td>
-</tr>
-<tr>
-<td>pre-line</td>
-<td>合并空白符序列，但是保留换行符。</td>
-</tr>
-<tr>
-<td>inherit</td>
-<td>规定应该从父元素继承 white-space 属性的值。</td>
-</tr>
-</tbody></table>
-<h5 id="2、允许长单词换行"><a href="#2、允许长单词换行" class="headerlink" title="2、允许长单词换行"></a>2、允许长单词换行</h5><pre><code>word-wrap:break-word;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>normal</td>
-<td>只在允许的断字点换行（浏览器保持默认处理）。</td>
-</tr>
-<tr>
-<td>break-word</td>
-<td>在长单词或 URL 地址内部进行换行。</td>
-</tr>
-</tbody></table>
-<h5 id="3、允许长单词换行"><a href="#3、允许长单词换行" class="headerlink" title="3、允许长单词换行"></a>3、允许长单词换行</h5><pre><code>word-break:break-all;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>normal</td>
-<td>使用浏览器默认的换行规则。</td>
-</tr>
-<tr>
-<td>break-all</td>
-<td>允许在单词内换行。</td>
-</tr>
-<tr>
-<td>keep-all</td>
-<td>只能在半角空格或连字符处换行。</td>
-</tr>
-</tbody></table>
-<h5 id="4、单行文字超出显示省略号"><a href="#4、单行文字超出显示省略号" class="headerlink" title="4、单行文字超出显示省略号"></a>4、单行文字超出显示省略号</h5><pre><code>overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
-</code></pre>
-<h5 id="5、多行文字超出显示省略号"><a href="#5、多行文字超出显示省略号" class="headerlink" title="5、多行文字超出显示省略号"></a>5、多行文字超出显示省略号</h5><pre><code>overflow: hidden;
-text-overflow: ellipsis;
-display: -webkit-box;
--webkit-line-clamp: 3;
--webkit-box-orient: vertical;
-</code></pre>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2020/08/28/html_tpl/" itemprop="url">
-                  文件模版
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-08-28T09:35:00+08:00" content="2020-08-28">
-              2020-08-28
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>HTML模版指的是团队使用的初始化HTML文件，里面会根据不同平台而采用不一样的设置，一般主要不同的设置就是 mata 标签的设置，以下是 PC 和移动端的 HTML 模版。</p>
-<h5 id="HTML5标准模版"><a href="#HTML5标准模版" class="headerlink" title="HTML5标准模版"></a>HTML5标准模版</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>HTML5标准模版<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> <span class="attr">content</span>=<span class="string">"telephone=no,email=no"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-capable"</span> <span class="attr">content</span>=<span class="string">"yes"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-touch-fullscreen"</span> <span class="attr">content</span>=<span class="string">"yes"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>移动端HTML模版<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">&lt;!-- S DNS预解析 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E DNS预解析 --&gt;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S 线上样式页面片，开发请直接取消注释引用 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- #include virtual="" --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E 线上样式页面片 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S 本地调试，根据开发模式选择调试方式，请开发删除 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/index.css"</span> &gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /本地调试方式 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"http://srcPath/index.css"</span> &gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /开发机调试方式 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E 本地调试 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="PC端"><a href="#PC端" class="headerlink" title="PC端"></a>PC端</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=Edge,chrome=1"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S 兼容国内双模浏览器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"renderer"</span> <span class="attr">content</span>=<span class="string">"webkit"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- webkit:默认用极速核 | ie-comp:ie兼容内核 | ie-stand:ie标准内核 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E 兼容国内双模浏览器 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>PC端HTML模版<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"your keywords"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"your description"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S DNS预解析 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E DNS预解析 --&gt;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S 线上样式页面片，开发请直接取消注释引用 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- #include virtual="" --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E 线上样式页面片 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- S 本地调试，根据开发模式选择调试方式，请开发删除 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/index.css"</span> &gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /本地调试方式 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"http://srcPath/index.css"</span> &gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /开发机调试方式 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- E 本地调试 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">›</a>
+  </nav>
+
 
 
           </div>
@@ -1319,7 +1303,7 @@ display: -webkit-box;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1361,7 +1345,7 @@ display: -webkit-box;
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
