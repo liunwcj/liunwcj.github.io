@@ -77,7 +77,7 @@ export default defineConfig({
 
     footer: {
       message: '基于 VitePress 构建',
-      copyright: 'Copyright © 2026 一灰'
+      copyright: 'Copyright © 2026 liunwcj <a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2022006833号</a>'
     },
 
     search: {

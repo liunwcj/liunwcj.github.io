@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "一灰"
+  # name: "一灰"
   # text: "记录技术成长与生活感悟"
   tagline: 一个基于 VitePress 构建的个人博客
   actions:
