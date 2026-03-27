@@ -77,7 +77,7 @@ export default defineConfig({
 
     footer: {
       message: '基于 VitePress 构建',
-      copyright: 'Copyright © 2024-present 一灰'
+      copyright: 'Copyright © 2026 一灰'
     },
 
     search: {
